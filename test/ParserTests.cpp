@@ -1,5 +1,4 @@
 #include "Parser.h"
-#include "HackAssembler.h"
 #include <gtest/gtest.h>
 #include <sstream>
 

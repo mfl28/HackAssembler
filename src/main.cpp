@@ -9,7 +9,7 @@ int main(int argc, char* argv[]) {
         return HackAssembler::assemble(argv[1]);
     }
 
-    cerr << "Wrong number of arguments. Usage: HackAssembler filename.asm." << flush;
+    cerr << "Wrong number of arguments. Usage: HackAssembler <filename>.asm." << flush;
     return  -1;
 }
 
