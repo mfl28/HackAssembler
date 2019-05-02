@@ -7,7 +7,7 @@ add_executable(${PROJECT_TEST_NAME} main.cpp ParserTests.cpp AssemblerEngineTest
 target_link_libraries(${PROJECT_TEST_NAME} gtest ${PROJECT_LIB_NAME})
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-	target_link_libraries(${PROJECT_NAME} stdc++fs)
+	target_link_libraries(${PROJECT_TEST_NAME} stdc++fs)
 endif()
     
 # Add tests and pass test-files directory path as an argument to gtest
