@@ -31,7 +31,7 @@ namespace HackAssembler {
     }
 
     void AssemblerEngine::parseLabels() {
-        auto programCounter{0};
+        unsigned programCounter{};
 
         while(parser_.hasMoreCommands()) {
             parser_.advance();

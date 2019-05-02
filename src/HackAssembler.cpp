@@ -22,7 +22,7 @@ namespace HackAssembler {
             return -1;
         }
 
-        if(ifstream inputFile{inputPath}; inputFile) {
+        if(ifstream inputFile{inputPath}) {
             stringstream outputBuffer;
             AssemblerEngine engine{inputFile, outputBuffer};
 
@@ -36,7 +36,7 @@ namespace HackAssembler {
 
             const auto outputPath{fs::path{inputPath}.replace_extension(".hack")};
 
-            if(ofstream outputFile{outputPath}; outputFile) {
+            if(ofstream outputFile{outputPath}) {
                 outputFile << outputBuffer.str();
             }
             else {
