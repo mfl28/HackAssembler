@@ -24,21 +24,15 @@ set(PROJECT_LIB_NAME ${PROJECT_NAME}Lib)
 
 add_library(${PROJECT_LIB_NAME} STATIC ${SOURCES} ${HEADERS})
 
-target_compile_options(${PROJECT_LIB_NAME}
-    PRIVATE
-        $<$<CXX_COMPILER_ID:GNU>:-lstdc++fs>
-)
-
 target_include_directories(${PROJECT_LIB_NAME} PUBLIC include)
 
 add_executable(${PROJECT_NAME} src/main.cpp)
 
-target_compile_options(${PROJECT_NAME}
-    PRIVATE
-        $<$<CXX_COMPILER_ID:GNU>:-lstdc++fs>
-)
-
 target_link_libraries(${PROJECT_NAME} ${PROJECT_LIB_NAME})
+
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+	target_link_libraries(${PROJECT_NAME} stdc++fs)
+endif()
 
 if (BUILD_TESTS)
     ## Source: https://github.com/google/googletest/blob/master/googletest/README.md#incorporating-into-an-existing-cmake-project
