@@ -24,6 +24,11 @@ set(PROJECT_LIB_NAME ${PROJECT_NAME}Lib)
 
 add_library(${PROJECT_LIB_NAME} STATIC ${SOURCES} ${HEADERS})
 
+target_compile_options(${PROJECT_LIB_NAME}
+    PRIVATE
+        $<$<CXX_COMPILER_ID:GNU>:-lstdc++fs>
+)
+
 target_include_directories(${PROJECT_LIB_NAME} PUBLIC include)
 
 add_executable(${PROJECT_NAME} src/main.cpp)
