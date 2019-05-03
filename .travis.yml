@@ -16,5 +16,5 @@ script:
   - cmake --version
   - cmake -D BUILD_TESTS=ON -S .
   - cmake --build . --config Release
-  - ctest -C Release
+  - ctest -C Release -V
 
