@@ -23,7 +23,7 @@ set(HEADERS include/AssemblerEngine.h
 # Build
 set(PROJECT_LIB_NAME ${PROJECT_NAME}Lib)
 
-add_library(${PROJECT_LIB_NAME} OBJECT ${SOURCES})
+add_library(${PROJECT_LIB_NAME} OBJECT ${SOURCES} ${HEADERS})
 target_include_directories(${PROJECT_LIB_NAME} PUBLIC include)
 
 add_executable(${PROJECT_NAME} src/main.cpp)
