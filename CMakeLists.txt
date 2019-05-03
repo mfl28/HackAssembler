@@ -2,10 +2,10 @@ cmake_minimum_required(VERSION 3.12)
 
 project(HackAssembler VERSION 1.0.0 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 17)
-
+# Adds an option to build the unit-tests (including the downloading and building of gtest)
 option(BUILD_TESTS "Build the tests" OFF)
 
+# Files
 set(SOURCES src/AssemblerEngine.cpp 
             src/HackAssembler.cpp
             src/Code.cpp 
@@ -20,20 +20,27 @@ set(HEADERS include/AssemblerEngine.h
             include/SymbolTable.h
 )
 
+# Build
 set(PROJECT_LIB_NAME ${PROJECT_NAME}Lib)
 
-add_library(${PROJECT_LIB_NAME} STATIC ${SOURCES} ${HEADERS})
-
+add_library(${PROJECT_LIB_NAME} OBJECT ${SOURCES})
 target_include_directories(${PROJECT_LIB_NAME} PUBLIC include)
 
 add_executable(${PROJECT_NAME} src/main.cpp)
-
 target_link_libraries(${PROJECT_NAME} ${PROJECT_LIB_NAME})
 
+# If gcc is used, it is necessary to link stdc++fs for std::filename support
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 	target_link_libraries(${PROJECT_NAME} stdc++fs)
 endif()
 
+set_target_properties(${PROJECT_LIB_NAME} ${PROJECT_NAME} PROPERTIES 
+    CXX_STANDARD 17 
+    CXX_STANDARD_REQUIRED YES 
+    CXX_EXTENSIONS NO
+)
+
+# Testing
 if (BUILD_TESTS)
     ## Source: https://github.com/google/googletest/blob/master/googletest/README.md#incorporating-into-an-existing-cmake-project
     # Download and unpack googletest at configure time
