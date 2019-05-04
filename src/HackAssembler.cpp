@@ -11,6 +11,7 @@ using std::runtime_error;
 using std::string;
 using std::stringstream;
 using std::cerr;
+using std::endl;
 namespace fs = std::filesystem;
 
 namespace HackAssembler {
@@ -18,7 +19,8 @@ namespace HackAssembler {
         const fs::path inputPath{inputPathName};
 
         if(inputPath.extension() != ".asm") {
-            cerr << "Assembler error: Invalid file extension: Expected \".asm\" but was " << inputPath.extension() << '.';
+            cerr << "Assembler error: Invalid file extension: Expected \".asm\" but was " 
+                 << inputPath.extension() << '.' << endl;
             return -1;
         }
 
@@ -30,7 +32,7 @@ namespace HackAssembler {
                 engine.execute();
             }
             catch(const runtime_error& e) {
-                cerr << "Assembler error: " << e.what();
+                cerr << "Assembler error: " << e.what() << endl;
                 return -1;
             }
 
@@ -40,12 +42,12 @@ namespace HackAssembler {
                 outputFile << outputBuffer.str();
             }
             else {
-                cerr << "Assembler error: Could not create output-file " << outputPath << '.';
+                cerr << "Assembler error: Could not create output-file " << outputPath << '.' << endl;
                 return -1;
             }
         }
         else {
-            cerr << "Assembler error: Could not open file " << inputPath << '.';
+            cerr << "Assembler error: Could not open file " << inputPath << '.' << endl;
             return -1;
         }
 
