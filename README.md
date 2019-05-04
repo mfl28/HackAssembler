@@ -6,21 +6,30 @@ This is an implementation of an assembler for the Hack-assembly-language as defi
 git clone https://github.com/mfl28/HackAssembler.git
 cd HackAssembler
 mkdir build
-cmake -S . -B build    # Or "cmake -D BUILD_TESTS=ON -S . -B build" if you want to also build the unit-tests.
-cmake --build build    # Add "--config Release" to select Release-configuration.
+cd build
+cmake ..    # Use "cmake -D BUILD_TESTS=ON .." if you want to also build the unit-tests.
+cmake --build .   
 ```
 ## Running the program
-After you built the program, then from the project root do:
+After you built the program, do the following from within the `build`-directory:
+#### Linux
 ```bash
-git clone https://github.com/mfl28/HackAssembler.git
-cd build/Debug    # Or "cd build/Release if you chose to build in Release-mode.
 ./HackAssembler path/to/file-to-assemble/filename.asm
 ```
-## Running the tests
-If you built the program including the unit-tests (i.e. using `-D BUILD_TESTS=ON`), then these can be run from the project root by doing the following:
+#### Windows
 ```bash
-cd build
-ctest -C Debug -V    # Or "ctest -C Release -V" if you chose to build in Release-mode.
+cd Debug    # Or "cd Release" if you built using Release-configuration.
+.\HackAssembler.exe path\to\file-to-assemble\filename.asm
+```
+## Running the tests
+If you built the program including the unit-tests (i.e. using `-D BUILD_TESTS=ON`), then these can be run from within the `build`-directory by doing the following:
+#### Linux
+```bash
+ctest -V
+```
+#### Windows
+```bash
+ctest -C Debug -V    # Or "ctest -C Release -V" if you built using Release-configuration.
 ```
 ## References
 - [nand2tetris-course](https://www.nand2tetris.org)
