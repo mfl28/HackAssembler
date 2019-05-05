@@ -59,5 +59,6 @@ namespace {
         ASSERT_EQ(referenceOutput, outputStream.str());
     }
 
-    INSTANTIATE_TEST_CASE_P(AssemblerEngineTestInstance, AssemblerEngineTest, ::testing::ValuesIn(TEST_FILE_NAMES));
+    INSTANTIATE_TEST_CASE_P(AssemblerEngineTestInstance, AssemblerEngineTest, ::testing::ValuesIn(TEST_FILE_NAMES),
+		[] (const ::testing::TestParamInfo<string>& info) { return info.param.substr(0, info.param.find('.')); });
 }
