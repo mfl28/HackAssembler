@@ -39,12 +39,13 @@ namespace {
     TEST_P(AssemblerEngineTest, AssemblyOutputMatchesReferenceOutput) {
         const fs::path inputPath{testFilesPath + GetParam()};
 
-        ASSERT_TRUE(fs::exists(inputPath));
+        ASSERT_TRUE(fs::exists(inputPath)) << "The test-file " << inputPath << " does not exist.";
 
         fs::path referenceOutputFilePath{inputPath};
         referenceOutputFilePath.replace_filename(inputPath.stem().string() + "_Ref.hack");
 
-        ASSERT_TRUE(fs::exists(referenceOutputFilePath)) << "Test-files path:" + testFilesPath + ", Reference file path: " + referenceOutputFilePath.string();
+        ASSERT_TRUE(fs::exists(referenceOutputFilePath)) << "The required reference-file " << referenceOutputFilePath.filename() 
+            << " does not exist in the test-file directory " << inputPath.parent_path();
 
         ifstream referenceOutputStream{referenceOutputFilePath};
         const string referenceOutput{istreambuf_iterator<char>{referenceOutputStream}, istreambuf_iterator<char>{}};
