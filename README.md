@@ -1,4 +1,4 @@
-# HackAssembler [![Build Status](https://travis-ci.org/mfl28/HackAssembler.svg?branch=master)](https://travis-ci.org/mfl28/HackAssembler)
+# HackAssembler [![Build Status](https://travis-ci.org/mfl28/HackAssembler.svg?branch=master)](https://travis-ci.org/mfl28/HackAssembler) [![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/mfl28/HackAssembler.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/mfl28/HackAssembler/context:cpp)
 This is a C++-implementation of an assembler for the Hack assembly-language as defined in the nand2tetris-course [project 6](https://www.nand2tetris.org/project06). The program gets a single `.asm`-file containing Hack assembly-language code as argument, translates it into binary code and outputs the result into a `.hack`-file.
 
 ## Building the program
