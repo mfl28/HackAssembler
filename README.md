@@ -2,7 +2,7 @@
 This is a C++-implementation of an assembler for the Hack assembly-language as defined in the nand2tetris-course [project 6](https://www.nand2tetris.org/project06). The program gets a single `.asm`-file containing Hack assembly-language code as argument, translates it into binary code and outputs the result into a `.hack`-file.
 
 ## Building the program
-_Note_: To build this program, a compiler that suppports C++17 and `std::filesystem` is required (e.g. gcc version &geq; 8).
+_Note_: To build this program, a compiler that supports C++17 and `std::filesystem` is required (e.g. gcc version &geq; 8).
 
 ```bash
 git clone https://github.com/mfl28/HackAssembler.git

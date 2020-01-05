@@ -17,4 +17,3 @@ script:
   - cmake -D BUILD_TESTS=ON -S .
   - cmake --build .
   - ctest -V
-
